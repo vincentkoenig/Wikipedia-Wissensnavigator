@@ -1,81 +1,117 @@
-# Wikipedia-Wissensnavigator
+# Wikipedia Knowledge Navigator 🧠
 
-Ein interaktives Python-Projekt, das mithilfe der OpenAI API automatisch Quizfragen aus Wikipedia-Artikeln generiert.
+An AI-powered command-line tool that searches Wikipedia articles, generates concise summaries using the OpenAI API, and creates interactive multiple-choice quizzes — all in your terminal.
 
-Ziel des Projekts ist es, Wissen intelligent aufzubereiten, automatisch Fragen zu erstellen und Inhalte verständlich zusammenzufassen – „Know it all at a glance“.
+> *"Know it all at a glance."*
 
-# Features
+## Demo
 
-🔎 Automatische Wikipedia-Artikelsuche
+```
+================================ Welcome ================================
+Please choose an option:
+1. Search article
+2. Exit
 
-Unscharfe oder mehrdeutige Suchbegriffe werden intelligent verarbeitet
+Enter a topic: Python (programming language)
 
-Vorschläge bei nicht eindeutigen Treffern
+Fetching Wikipedia article...
 
-🧾 KI-generierte Zusammenfassungen
+========================= SUMMARY =========================
+Python is a high-level, general-purpose programming language known for
+its clear syntax and readability...
+===========================================================
 
-Lange Artikel werden kompakt und verständlich dargestellt
+Would you like a short quiz? (y/n): y
 
-❓ Automatische Quiz-Generierung
+Question 1: What is Python primarily known for?
+A) Low-level memory management
+B) Clear syntax and readability
+C) Browser-based execution
+D) Compiled performance
 
-Multiple-Choice-Fragen (A, B, C, D)
+Your answer (A/B/C/D): B
+✅ Correct!
 
-Strukturierte JSON-Ausgabe für zuverlässige Weiterverarbeitung
+RESULT: 3/3 correct (100%)
+```
 
-🎯 Verschiedene Schwierigkeitslevel
+## Features
 
-Anpassbare Quiz-Komplexität
+- 🔎 **Smart Wikipedia search** — handles fuzzy and ambiguous search terms, suggests alternatives when no exact match is found
+- 🤖 **AI-powered summaries** — long articles condensed into clear, readable overviews via OpenAI API
+- ❓ **Auto-generated quizzes** — multiple-choice questions (A/B/C/D) with adjustable difficulty, structured as JSON for reliable processing
+- 🎨 **Clean terminal UI** — color-coded output with Colorama for a polished command-line experience
+- 📊 **Structured outputs** — AI responses parsed as JSON for consistent, reliable results
 
-📊 Saubere Struktur durch Structured Outputs
+## Tech Stack
 
-KI-Antworten werden im JSON-Format verarbeitet
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
+![OpenAI](https://img.shields.io/badge/OpenAI_API-412991?style=flat&logo=openai&logoColor=white)
+![Wikipedia](https://img.shields.io/badge/Wikipedia_API-000000?style=flat&logo=wikipedia&logoColor=white)
 
-Klare Trennung zwischen Logik und Text
+- **Python 3.x**
+- **OpenAI API** — GPT-based summarization and quiz generation
+- **wikipedia** — Python package for Wikipedia article retrieval
+- **Colorama** — cross-platform colored terminal output
+- **JSON** — structured data processing for AI responses
 
-🛠️ Verwendete Technologien
+## Project Structure
 
-Python 3.x
+```
+Wikipedia-Wissensnavigator/
+├── main.py            # CLI loop, menu, quiz runner
+├── wiki_functions.py  # Wikipedia article fetching & URL retrieval
+├── openai_api.py      # OpenAI summarization & quiz generation
+└── README.md
+```
 
-OpenAI API
+## Getting Started
 
-Wikipedia API (wikipedia Python Package)
+**1. Clone the repository**
+```bash
+git clone https://github.com/vincentkoenig/Wikipedia-Wissensnavigator.git
+cd Wikipedia-Wissensnavigator
+```
 
-JSON für strukturierte Datenverarbeitung
-
-Colorama (für farbige Konsolenausgabe)
-
-
-# ⚙️ Installation
-
-Repository klonen:
-
-git clone <repository-url>
-cd <repository-name>
-
-
-Virtuelle Umgebung erstellen (optional, empfohlen):
-
+**2. Create a virtual environment (recommended)**
+```bash
 python -m venv venv
+# Windows
 venv\Scripts\activate
+# Mac/Linux
+source venv/bin/activate
+```
 
-
-Abhängigkeiten installieren:
-
+**3. Install dependencies**
+```bash
 pip install openai wikipedia colorama
+```
 
+**4. Set your OpenAI API key**
+```bash
+# Windows
+setx OPENAI_API_KEY "your-api-key"
 
-OpenAI API-Key als Umgebungsvariable setzen:
+# Mac/Linux
+export OPENAI_API_KEY="your-api-key"
+```
 
-Windows:
-
-setx OPENAI_API_KEY "dein_api_key"
-
-
-Mac/Linux:
-
-export OPENAI_API_KEY="dein_api_key"
-
-# ▶️ Projekt starten
+**5. Run the app**
+```bash
 python main.py
+```
 
-Suchbegriff eingeben → Zusammenfassung lesen → Quiz starten → Punkte erhalten 🎉
+## How It Works
+
+1. Enter any topic → the app searches Wikipedia and retrieves the full article text
+2. The article is sent to the OpenAI API, which returns a concise summary
+3. Optionally, the AI generates 3 multiple-choice quiz questions based on the summary
+4. Your answers are evaluated and a score is displayed
+
+## What I Learned
+
+- Integrating third-party APIs (OpenAI, Wikipedia) in Python
+- Parsing and working with structured JSON responses from AI models
+- Separating concerns across multiple modules (`main.py`, `wiki_functions.py`, `openai_api.py`)
+- Building interactive CLI applications with user input handling and error cases
+- Using Colorama for cross-platform terminal styling
