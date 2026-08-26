@@ -31,7 +31,7 @@ def summarize(text):
 
     try:
         response = client.chat.completions.create(
-            model="gpt-5-nano",  # schnelles, günstiges Modell
+            model="gpt-4o-mini",  # schnelles, günstiges Modell
             messages=[
                 {
                     "role": "system",
@@ -86,7 +86,7 @@ SUMMARY:
 
     try:
         response = client.chat.completions.create(
-            model="gpt-5-nano",
+            model="gpt-4o-mini",
             messages=[
                 {
                     "role": "system",

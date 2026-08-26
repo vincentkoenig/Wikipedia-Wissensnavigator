@@ -1,0 +1,6 @@
+openai_key.env
+venv/
+__pycache__/
+*.pyc
+.idea/
+Wissensnavigator_Final_Presentation.pptx
