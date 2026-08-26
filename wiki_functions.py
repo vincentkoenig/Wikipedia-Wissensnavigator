@@ -2,6 +2,7 @@ import wikipedia
 
 WIKI_INPUT = "Olympische Spiele"
 wikipedia.set_lang("de")
+wikipedia.set_user_agent("Wikipedia-Wissensnavigator/1.0 (https://github.com/vincentkoenig/Wikipedia-Wissensnavigator)")
 
 def is_wiki_content_found(topic):
     """
@@ -20,11 +21,11 @@ def is_wiki_content_found(topic):
                 (None, Liste[strings]) bei Mehrdeutigkeit oder fehlender Seite
     """
     try:
-        wiki_full = wikipedia.page(topic)
+        wiki_full = wikipedia.page(topic, auto_suggest=False)
         return wiki_full, None
     except wikipedia.DisambiguationError as e:
         return None, e.options[:5]
-    except wikipedia.PageError:
+    except wikipedia.PageError as e:
         wiki_search = wikipedia.search(topic, results=5)
         return None, wiki_search
 
